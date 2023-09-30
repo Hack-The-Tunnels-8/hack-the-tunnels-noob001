@@ -87,9 +87,32 @@ const updateProduct = async (request: Request, response: Response) => {
   });
 };
 
+const deleteProduct = async (request: Request, response: Response) => {
+  const authorization = await verifyAuthorization(
+    request.headers.authorization
+  );
+
+  if (authorization.err) {
+    return error(response, {
+      error: authorization.val.message,
+      statusCode: 401,
+    });
+  }
+
+  const product = await ProductService.Delete(parseInt(request.params.id));
+
+  return success(response, {
+    data: {
+      product: product,
+    },
+    statusCode: 201,
+  });
+};
+
 router.get("/", getProducts);
 router.get("/:id", getProduct);
 router.post("/", createProduct);
 router.put("/:id", updateProduct);
+router.delete("/:id", deleteProduct);
 
 export default router;

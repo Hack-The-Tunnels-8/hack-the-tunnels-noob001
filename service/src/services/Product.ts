@@ -58,3 +58,13 @@ export const update = async (
   });
   return updatedProduct;
 };
+
+//cause delete is a reserved key-word
+export const Delete = async (id: number): Promise<Product> => {
+  const product = await prisma.product.delete({
+    where: {
+      id,
+    },
+  });
+  return product;
+};
