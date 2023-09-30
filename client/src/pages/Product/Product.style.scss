@@ -1,0 +1,11 @@
+.product-page {
+    &__product {
+        font-size: 20px;
+        column-width: 14rem;
+    }
+
+    &__productImage {
+        width: 16rem;
+        display: flex;
+    }
+}
