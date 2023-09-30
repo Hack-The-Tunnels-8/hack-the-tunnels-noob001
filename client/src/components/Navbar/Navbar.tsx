@@ -10,7 +10,7 @@ function Navbar() {
   return (
     <div className="navbar">
       <div className="navbar__logo">
-        <Link to="/">Store Logo</Link>
+        <Link to="/"><img src="https://cdn-icons-png.flaticon.com/128/102/102665.png" alt=" Store Image" /></Link>
       </div>
       <div className="navbar__account">
         {loggedIn() === false ? (
