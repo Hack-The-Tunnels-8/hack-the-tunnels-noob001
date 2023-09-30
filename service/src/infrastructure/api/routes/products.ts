@@ -36,7 +36,7 @@ const getProduct = async (request: Request, response: Response) => {
 
 const createProduct = async (request: Request, response: Response) => {
   const authorization = await verifyAuthorization(
-    request.headers.authorization,
+    request.headers.authorization
   );
 
   if (authorization.err) {
@@ -49,7 +49,34 @@ const createProduct = async (request: Request, response: Response) => {
   const product = await ProductService.create(
     request.body.title,
     request.body.description,
-    request.body.price,
+    request.body.price
+  );
+
+  return success(response, {
+    data: {
+      product: product,
+    },
+    statusCode: 201,
+  });
+};
+
+const updateProduct = async (request: Request, response: Response) => {
+  const authorization = await verifyAuthorization(
+    request.headers.authorization
+  );
+
+  if (authorization.err) {
+    return error(response, {
+      error: authorization.val.message,
+      statusCode: 401,
+    });
+  }
+
+  const product = await ProductService.update(
+    parseInt(request.params.id),
+    request.body.title,
+    request.body.description,
+    request.body.price
   );
 
   return success(response, {
@@ -63,5 +90,6 @@ const createProduct = async (request: Request, response: Response) => {
 router.get("/", getProducts);
 router.get("/:id", getProduct);
 router.post("/", createProduct);
+router.put("/:id", updateProduct);
 
 export default router;
