@@ -1,1 +1,1 @@
-export {default as Page4 } from "./page4"
+export { default as Page4 } from "./Page4";
