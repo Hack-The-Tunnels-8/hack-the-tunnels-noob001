@@ -1,0 +1,25 @@
+.login-page {
+  width: 600px;
+  padding: 50px;
+  display: flex;
+  flex-direction: column;
+  background-color: orange;
+}
+
+.input- {
+  &mail {
+    margin-bottom: 20px;
+    height: 50px;
+    border-radius: 20px;
+  }
+  &pass {
+    margin-bottom: 20px;
+    height: 50px;
+    border-radius: 20px;
+  }
+  &button {
+    width: 100px;
+    margin: 0 auto;
+    height: 60px;
+  }
+}
