@@ -5,8 +5,15 @@ import { Product } from "@prisma/client";
 
 const router = express.Router();
 
-const getProducts = async (_: Request, response: Response) => {
-  const products = await ProductService.all();
+const getProducts = async (request: Request, response: Response) => {
+  const search_term = request?.query?.searchTerm as string;
+  let products: Product[];
+  if (search_term) {
+    products = await ProductService.search(search_term);
+    console.log(products);
+  } else {
+    await ProductService.all();
+  }
 
   return success(response, {
     data: {
@@ -18,13 +25,8 @@ const getProducts = async (_: Request, response: Response) => {
 
 const getProduct = async (request: Request, response: Response) => {
   const id = request.params.id;
-  const search_term = request.query.searchTerm as string;
-  let product: Product;
-  if (search_term) {
-    product = await ProductService.search(search_term);
-  } else {
-    product = await ProductService.find(id);
-  }
+
+  let product = await ProductService.find(id);
 
   if (product === null) {
     return error(response, {
