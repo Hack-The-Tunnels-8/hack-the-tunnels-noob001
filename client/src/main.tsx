@@ -3,14 +3,15 @@ import ReactDOM from "react-dom/client";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import { CookiesProvider, useCookies } from "react-cookie";
 import {
+  Page4,
   Admin,
   Checkout,
   CreateProduct,
   Home,
   Login,
   Product,
-  SignUp,
-} from "./pages";
+  SignUp} 
+   from "./pages";
 import { AccountProvider } from "./context";
 import "./index.scss";
 
@@ -45,7 +46,7 @@ const router = createBrowserRouter([
   },
   {
     path: "*",
-    element: <div>404</div>,
+    element: <Page4 />,
   },
 ]);
 

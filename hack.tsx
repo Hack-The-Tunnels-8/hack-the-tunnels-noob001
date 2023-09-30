@@ -34,7 +34,20 @@ function Login(){
         {message && <p>{message}</p>}
       </div>  
 
-  
+      <div>
+        <form onSubmit={attemptLogin}>
+          <div>
+            <label>Email:</label>
+            <input type="email"><br>
+          </div>
+          <div>
+            <label><Password:></label>
+            <input type="password"><br><br>
+          </div>
+          <div>
+            <button type="submit">Submit</button>
+          </div>
+        </form>
 
       
     </Page>  
