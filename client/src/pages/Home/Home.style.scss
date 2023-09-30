@@ -12,5 +12,21 @@
       text-decoration: none;
       color: inherit;
     }
+    p{
+      animation-name:colour;
+      animation-duration: 5s;
+      animation-iteration-count: infinite;
+      color: black;
+      font-size:30px ;
+      font-weight: 800;
+    }
+    @keyframes colour {
+      0%{color: red;}
+      25%{color:green}
+      50%{color:yellow}
+      75%{color:blue}
+      100%{color: rgb(15, 222, 237);}
+    }
   }
+ 
 }
