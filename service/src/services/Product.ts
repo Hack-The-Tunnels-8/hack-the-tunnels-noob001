@@ -68,3 +68,12 @@ export const Delete = async (id: number): Promise<Product> => {
   });
   return product;
 };
+
+export const search = async (searchTerm: string): Promise<Product> => {
+  return await prisma.product.findFirst({
+    where: {
+      title: searchTerm,
+      description: searchTerm,
+    },
+  });
+};
